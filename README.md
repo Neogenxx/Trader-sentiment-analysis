@@ -52,7 +52,7 @@ pip install pandas numpy matplotlib scikit-learn jupyter
 jupyter notebook notebook.ipynb
 ```
 
-4. Run all cells in order from top to bottom — **do not skip cells**, each section builds on the previous one
+4. Run all cells in order from top to bottom  **do not skip cells**, each section builds on the previous one
 5. Outputs (charts, printed tables) will appear inline below each cell
 
 Each section is clearly labelled in the notebook:
@@ -96,7 +96,7 @@ Bonus  — Predictive model
 
 | Issue | Resolution |
 |---|---|
-| Unix `Timestamp` column corrupted by Excel scientific notation — only 7 unique values across 211,224 rows | Column dropped. `Timestamp IST` used as sole time reference |
+| Unix `Timestamp` column corrupted by Excel scientific notation  only 7 unique values across 211,224 rows | Column dropped. `Timestamp IST` used as sole time reference |
 | `2024-10-26` missing from Fear/Greed index | Forward-filled from Oct 25 sentiment (Greed, value=72) — standard practice for single-day gaps |
 | 50.6% of trades have `Closed PnL = 0` (open positions, not break-even trades) | Retained. Win rate calculated on closed trades only throughout |
 | 344 rows from 2 accounts pre-dating 2024 | Retained — legitimate trades, covered by Fear/Greed index, 0.16% of data |
@@ -107,7 +107,7 @@ Bonus  — Predictive model
 
 - Both datasets loaded, profiled, and documented (shape, dtypes, nulls, duplicates)
 - Timestamps parsed using explicit format string to avoid day/month ambiguity
-- Left merge on `date` column — 100% sentiment coverage after forward fill
+- Left merge on `date` column 100% sentiment coverage after forward fill
 - Helper columns added: `is_closed`, `is_win_closed`, `is_long`
 - Daily aggregation per account: `daily_pnl`, `trade_count`, `win_rate`, `long_ratio`, `avg_size_usd`, `total_fees`, `drawdown`
 - Account-level summary built: `total_pnl`, `pnl_per_day`, `trades_per_day`, `activity_rate`, `overall_win_rate`
@@ -119,9 +119,9 @@ Bonus  — Predictive model
 
 ### Q1: Does performance differ between Fear and Greed days?
 
-- Median daily PnL is higher on Greed days ($267) than Fear days ($123) — 2.2x difference
+- Median daily PnL is higher on Greed days ($267) than Fear days ($123)  2.2x difference
 - Mean PnL is higher on Fear days ($5,185) but driven by outlier days, not consistent performance
-- Win rate is nearly identical across sentiment (Fear: 84.2%, Greed: 85.6%) — sentiment does not affect win probability
+- Win rate is nearly identical across sentiment (Fear: 84.2%, Greed: 85.6%) sentiment does not affect win probability
 - Worst single drawdown occurred during Greed (-$369,393), not Fear
 
 ### Q2: Do traders change behavior based on sentiment?
@@ -187,4 +187,3 @@ A binary classifier was trained to predict next-day trader profitability using s
 
 **Result:** No model meaningfully beat the majority-class baseline. Root cause: mean lag-1 PnL autocorrelation is 0.071 — essentially a random walk. Behavior features (position size, trade frequency) outrank sentiment features in importance. The raw Fear/Greed score (0–100) carries 3x more signal than the categorical label.
 
----
