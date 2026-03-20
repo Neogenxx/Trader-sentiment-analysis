@@ -1,5 +1,4 @@
-# Trader Performance vs Market Sentiment — Primetrade.ai Data Science Intern Assignment
-
+# Trader Performance vs Market Sentiment
 ## Overview
 
 This project analyzes how Bitcoin market sentiment (Fear/Greed Index) relates to trader behavior and performance on the Hyperliquid derivatives exchange. The analysis covers 211,224 trades across 32 accounts from May 2023 to May 2025.
@@ -189,9 +188,3 @@ A binary classifier was trained to predict next-day trader profitability using s
 **Result:** No model meaningfully beat the majority-class baseline. Root cause: mean lag-1 PnL autocorrelation is 0.071 — essentially a random walk. Behavior features (position size, trade frequency) outrank sentiment features in importance. The raw Fear/Greed score (0–100) carries 3x more signal than the categorical label.
 
 ---
-
-## Contact
-
-Submission for Primetrade.ai Data Science Intern role.
-Subject: `Junior Data Scientist – Trader Behavior Insights`
-Email: hello@anything.ai · joydip@anything.ai · chetan@primetrade.ai · sonika@primetrade.ai
